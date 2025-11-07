@@ -1,0 +1,36 @@
+drop database LoginTokenJWT;
+
+create database LoginTokenJWT;
+
+use LoginTokenJWT;
+
+create table register (
+id int primary key auto_increment,
+name varchar(100),
+email varchar(100),
+password varchar(100)
+);
+
+select * from register;
+
+create table login (
+id int primary key,
+email varchar(100),
+password varchar(100),
+foreign key (id)
+references register(id)
+on delete cascade
+);
+
+select * from login;
+
+create table admin (
+email varchar(100),
+password varchar(100)
+);
+
+insert into admin (email, password)
+values
+('admin@gmail.com',MD5('1234'));
+
+select * from admin;

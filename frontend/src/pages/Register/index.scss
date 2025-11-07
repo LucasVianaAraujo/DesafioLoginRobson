@@ -1,0 +1,33 @@
+.MainScreen {
+    display: flex;
+    background: #146096;
+    background: linear-gradient(90deg, rgba(20, 96, 150, 1) 0%, rgb(25, 141, 236) 52%, rgba(20, 96, 150, 1) 100%);
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .BlocoLogin {
+        display: flex;
+        background-color: white;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 1vh;
+        padding: 5vh;
+        width: 20%;
+        border-radius: 1vh;
+
+        input {
+            padding: 1vh;
+            height: 4vh;
+            width: 100%;
+        }
+
+        button {
+            height: 4vh;
+            width: 100%;
+        }
+    }
+}
