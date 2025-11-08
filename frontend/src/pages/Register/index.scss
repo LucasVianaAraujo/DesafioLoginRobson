@@ -1,7 +1,6 @@
 .MainScreen {
     display: flex;
-    background: #146096;
-    background: linear-gradient(90deg, rgba(20, 96, 150, 1) 0%, rgb(25, 141, 236) 52%, rgba(20, 96, 150, 1) 100%);
+    background: #000000;
     height: 100vh;
     width: 100%;
     align-items: center;
@@ -9,13 +8,12 @@
 
     .BlocoLogin {
         display: flex;
-        background-color: white;
-        justify-content: center;
+        background-color: #212121;
         flex-direction: column;
-        align-items: center;
         height: auto;
         gap: 1vh;
         padding: 5vh;
+        color: white;
         width: 20%;
         border-radius: 1vh;
 
@@ -23,11 +21,42 @@
             padding: 1vh;
             height: 4vh;
             width: 100%;
+            border-radius: 0.5vh;
+            background-color: #2F2F2F;
+            border: solid black 0.1vh;
+            font-size: 1.7vh;
+        }
+
+        input:focus {
+            border-radius: 0.4vh;
+            border: solid black 0.1vh;
+        }
+
+        h2 {
+            font-weight: 700;
+        }
+
+        h4 {
+            color: rgba(128, 128, 128, 0.683);
+            font-weight: 600;
         }
 
         button {
-            height: 4vh;
+            height: 5vh;
             width: 100%;
+            border-radius: 1vh;
+            font-weight: 500;
+            font-size: 2vh;
+            background-color: white;
+            color: black;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        button:hover {
+            background-color: rgb(209, 209, 209);
         }
     }
 }

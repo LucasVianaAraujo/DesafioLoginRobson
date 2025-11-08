@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './index.scss'
 import api from '../../api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { Toaster, toast } from 'react-hot-toast'
 
@@ -12,14 +12,11 @@ export default function Register() {
     const navigate = useNavigate()
 
     localStorage.getItem("token")
-    if ("token") {
-        navigate('/Home')
-    }
-
     async function SendCred() {
         try {
             if (!name || !email || !password) {
                 toast.error("Cannot send empty fields.")
+                return
             }
 
             const body = {
@@ -29,45 +26,50 @@ export default function Register() {
             }
 
             const resp = await api.post('/register', body)
-            toast.success('Account Created!')
-            const token = resp.data.token
+
+            const token = resp.data.Token
             localStorage.setItem("token", token)
+
+            navigate('/Home')
         }
 
         catch (err) {
             console.log(err)
             toast.error("Revise your data.")
+            return
         }
     }
 
     return (
         <div className='MainScreen'>
             <div className="BlocoLogin">
-                <h2>Register</h2>
-                <h4>Elaborar alguma descrição slaaa kkkk</h4>
+                <h2>Sign Up</h2>
+                <h4>Create Account</h4>
 
-                <label>Name</label>
                 <input
                     type="text"
                     value={name}
+                    placeholder='Username'
                     onChange={e => setName(e.target.value)}
                 />
 
-                <label>Email</label>
                 <input
                     type="email"
                     value={email}
+                    placeholder='Email'
                     onChange={e => setEmail(e.target.value)}
                 />
 
-                <label>Password</label>
                 <input
                     type="password"
                     value={password}
+                    placeholder='Password'
                     onChange={e => setPassWord(e.target.value)}
                 />
 
                 <button onClick={SendCred}>Send</button>
+
+                <h4>Already been around? <Link to={'/login'}>Click Here</Link></h4>
             </div>
 
             <Toaster

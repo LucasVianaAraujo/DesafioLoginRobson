@@ -1,6 +1,7 @@
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
+import Home from './pages/Home'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -11,6 +12,7 @@ export default function Navigation() {
                 <Route path='/' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/admin' element={<Admin />} />
+                <Route path='/home' element={<Home />} />
             </Routes>
         </BrowserRouter>
     )

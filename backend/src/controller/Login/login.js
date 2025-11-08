@@ -6,14 +6,14 @@ const auth = getAuthentication();
 
 const endpoint = Router()
 
-endpoint.post('/login', auth, async (req, resp) => {
+endpoint.post('/login', async (req, resp) => {
     try {
         const body = req.body;
 
         const awnser = await repo.VerifyInformation(body)
 
         resp.send({
-            UserVerified: generateToken({ id: awnser.insertId })
+            'Token': generateToken({ id: awnser.insertId })
         })
     }
 
