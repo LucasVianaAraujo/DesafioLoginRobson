@@ -1,36 +1,40 @@
 import { useState } from 'react'
 import './index.scss'
-import api from '../../api'
+import api from '../../api.js'
 import { useNavigate, Link } from 'react-router-dom'
 
 import { Toaster, toast } from 'react-hot-toast'
+import { useEffect } from 'react'
 
-export default function Register() {
-    const [name, setName] = useState('')
+export default function AdminLogin() {
     const [email, setEmail] = useState('')
     const [password, setPassWord] = useState('')
     const navigate = useNavigate()
 
-    localStorage.getItem("token")
     async function SendCred() {
-        try {
-            if (!name || !email || !password) {
-                toast.error("Cannot send empty fields.")
-                return
-            }
+        if (!email || !password) {
+            toast.error("Cannot send empty fields.")
+            return
+        }
 
+        try {
             const body = {
-                "name": name,
                 "email": email,
                 "password": password
             }
 
-            const resp = await api.post('/register', body)
+            const resp = await api.post('/admin', body)
 
-            const token = resp.data.Token
-            localStorage.setItem("token", token)
+            const token = resp.data.AdminFound
 
-            navigate('/Home')
+            if (token == undefined || token == null || token == '') {
+                return toast.error('Error on validate admin')
+            }
+
+            else {
+                localStorage.setItem("admin", token)
+                navigate('/admin')
+            }
         }
 
         catch (err) {
@@ -43,15 +47,8 @@ export default function Register() {
     return (
         <div className='MainScreen'>
             <div className="BlocoLogin">
-                <h2>Sign In</h2>
-                <h4>Create Account</h4>
-
-                <input
-                    type="text"
-                    value={name}
-                    placeholder='Username'
-                    onChange={e => setName(e.target.value)}
-                />
+                <h2>Admin Access</h2>
+                <h4>Proceed to Admin Painel</h4>
 
                 <input
                     type="email"
@@ -69,7 +66,7 @@ export default function Register() {
 
                 <button onClick={SendCred}>Send</button>
 
-                <h4>Already been around? <Link to={'/'}>Click Here</Link></h4>
+                <h4>Standard Login? <Link to={'/'}>Click Here</Link></h4>
             </div>
 
             <Toaster

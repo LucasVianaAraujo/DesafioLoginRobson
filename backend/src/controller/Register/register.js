@@ -23,4 +23,32 @@ endpoint.post('/register', async (req, resp) => {
     }
 })
 
+endpoint.get('/count', async (req, resp) => {
+    try {
+        const awnser = await repo.CountUsers()
+        resp.send({
+            'Users': awnser
+        })
+    }
+
+    catch (err) {
+        console.log(err)
+        return
+    }
+})
+
+endpoint.get('/admin', async (req, resp) => {
+    try {
+        const awnser = await repo.CountAdmin()
+        resp.send({
+            'Admin': awnser
+        })
+    }
+
+    catch (err) {
+        console.log(err)
+        return
+    }
+})
+
 export default endpoint

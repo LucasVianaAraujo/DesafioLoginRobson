@@ -12,8 +12,14 @@ endpoint.post('/login', async (req, resp) => {
 
         const awnser = await repo.VerifyInformation(body)
 
+        if (awnser.length == 0 ) {
+            return resp.status(401).send({
+                erro: 'ID não recebido'
+            })
+        }
+
         resp.send({
-            'Token': generateToken({ id: awnser.insertId })
+            'Token': generateToken({ id: awnser.id })
         })
     }
 

@@ -17,3 +17,13 @@ export async function RegUser(body) {
 
     return results
 }
+
+export async function CountUsers() {
+    let [results] = await connection.query(`select count(id) as total from register`)
+    return results[0]
+}
+
+export async function CountAdmin() {
+    let [results] = await connection.query(`select count(email) as admin from admin`)
+    return results[0]
+}

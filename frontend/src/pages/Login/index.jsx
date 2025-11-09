@@ -32,12 +32,17 @@ export default function Register() {
             }
 
             const resp = await api.post('/login', body)
-
             const token = resp.data.Token
 
-            localStorage.setItem("token", token)
+            if (token == undefined || token == null || token == '') {
+                return toast.error('Error ao validar token')
+            }
 
-            navigate('/Home')
+            else {
+                localStorage.setItem("token", token)
+                navigate('/Home')
+            }
+
         }
 
         catch (err) {
@@ -69,7 +74,7 @@ export default function Register() {
 
                 <button onClick={SendCred}>Send</button>
 
-                <h4>New Blood? <Link to={'/'}>Click Here</Link></h4>
+                <h4>New Blood? <Link to={'/register'}>Click Here</Link></h4>
             </div>
 
             <Toaster
