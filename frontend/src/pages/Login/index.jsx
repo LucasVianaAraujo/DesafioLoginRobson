@@ -77,7 +77,7 @@ export default function Register() {
 
                     <button onClick={SendCred}>Send</button>
 
-                    <h4>New Blood? <Link to={'/register'}>Click Here</Link></h4>
+                    <h4>New blood? <Link to={'/register'}>Click Here</Link></h4>
                 </div>
 
                 <Toaster

@@ -39,8 +39,6 @@ export default function Admin() {
             <Header />
             <div className='MainScreen'>
 
-                <h1>Dashboard</h1>
-
                 <div className="AlignCounter">
                     <div className="Left">
                         <FaUser id='Users' />
