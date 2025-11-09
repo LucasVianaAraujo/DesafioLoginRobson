@@ -108,27 +108,4 @@
         }
 
     }
-
-    .button {
-        display: flex;
-
-        button {
-            margin-top: 2vh;
-            height: 5vh;
-            width: 20vh;
-            border-radius: 1vh;
-            font-weight: 500;
-            font-size: 2vh;
-            background-color: white;
-            color: black;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.5s;
-        }
-
-        button:hover {
-            background-color: rgb(209, 209, 209);
-        }
-    }
 }

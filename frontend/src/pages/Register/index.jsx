@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './index.scss'
 import api from '../../api'
 import { useNavigate, Link } from 'react-router-dom'
-
+import Header from '../../components/Header/index.jsx'
 import { Toaster, toast } from 'react-hot-toast'
 
 export default function Register() {
@@ -41,41 +41,44 @@ export default function Register() {
     }
 
     return (
-        <div className='MainScreen'>
-            <div className="BlocoLogin">
-                <h2>Sign In</h2>
-                <h4>Create Account</h4>
+        <div>
+            <Header/>
+            <div className='MainScreen'>
+                <div className="BlocoLogin">
+                    <h2>Sign In</h2>
+                    <h4>Create Account</h4>
 
-                <input
-                    type="text"
-                    value={name}
-                    placeholder='Username'
-                    onChange={e => setName(e.target.value)}
+                    <input
+                        type="text"
+                        value={name}
+                        placeholder='Username'
+                        onChange={e => setName(e.target.value)}
+                    />
+
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder='Email'
+                        onChange={e => setEmail(e.target.value)}
+                    />
+
+                    <input
+                        type="password"
+                        value={password}
+                        placeholder='Password'
+                        onChange={e => setPassWord(e.target.value)}
+                    />
+
+                    <button onClick={SendCred}>Send</button>
+
+                    <h4>Already been around? <Link to={'/'}>Click Here</Link></h4>
+                </div>
+
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
                 />
-
-                <input
-                    type="email"
-                    value={email}
-                    placeholder='Email'
-                    onChange={e => setEmail(e.target.value)}
-                />
-
-                <input
-                    type="password"
-                    value={password}
-                    placeholder='Password'
-                    onChange={e => setPassWord(e.target.value)}
-                />
-
-                <button onClick={SendCred}>Send</button>
-
-                <h4>Already been around? <Link to={'/'}>Click Here</Link></h4>
             </div>
-
-            <Toaster
-                position="top-center"
-                reverseOrder={false}
-            />
         </div>
     )
 }

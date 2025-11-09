@@ -4,7 +4,7 @@ import api from '../../api.js'
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-
+import Header from '../../components/Header/index.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Admin() {
@@ -35,31 +35,30 @@ export default function Admin() {
     }, [])
 
     return (
-        <div className='MainScreen'>
+        <div>
+            <Header />
+            <div className='MainScreen'>
 
-            <h1>Dashboard</h1>
+                <h1>Dashboard</h1>
 
-            <div className="AlignCounter">
-                <div className="Left">
-                    <FaUser id='Users' />
-                    <div className="Title">
-                        <h3>{count ? count : 'None users found'}</h3>
-                        <h2>Total Users</h2>
+                <div className="AlignCounter">
+                    <div className="Left">
+                        <FaUser id='Users' />
+                        <div className="Title">
+                            <h3>{count ? count : 'None users found'}</h3>
+                            <h2>Total Users</h2>
+                        </div>
+                    </div>
+                    <div className="Right">
+                        <MdAdminPanelSettings id='Admin' />
+                        <div className="Title">
+                            <h3>{adminCount ? adminCount : 'None admin found'}</h3>
+                            <h2>Admin</h2>
+                        </div>
                     </div>
                 </div>
-                <div className="Right">
-                    <MdAdminPanelSettings id='Admin' />
-                    <div className="Title">
-                        <h3>{adminCount ? adminCount : 'None admin found'}</h3>
-                        <h2>Admin</h2>
-                    </div>
-                </div>
-            </div>
 
-            <div className="button">
-                <Link to={'/Home'}><button>Home</button></Link>
             </div>
-
         </div>
     )
 }

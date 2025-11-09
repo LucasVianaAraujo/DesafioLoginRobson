@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './index.scss'
 import api from '../../api.js'
 import { useNavigate, Link } from 'react-router-dom'
-
+import Header from '../../components/Header/index.jsx'
 import { Toaster, toast } from 'react-hot-toast'
 import { useEffect } from 'react'
 
@@ -13,8 +13,7 @@ export default function AdminLogin() {
 
     async function SendCred() {
         if (!email || !password) {
-            toast.error("Cannot send empty fields.")
-            return
+            return toast.error("Cannot send empty fields.")
         }
 
         try {
@@ -45,34 +44,37 @@ export default function AdminLogin() {
     }
 
     return (
-        <div className='MainScreen'>
-            <div className="BlocoLogin">
-                <h2>Admin Access</h2>
-                <h4>Proceed to Admin Painel</h4>
+        <div>
+            <Header />
+            <div className='MainScreen'>
+                <div className="BlocoLogin">
+                    <h2>Admin Access</h2>
+                    <h4>Proceed to Admin Painel</h4>
 
-                <input
-                    type="email"
-                    value={email}
-                    placeholder='Email'
-                    onChange={e => setEmail(e.target.value)}
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder='Email'
+                        onChange={e => setEmail(e.target.value)}
+                    />
+
+                    <input
+                        type="password"
+                        value={password}
+                        placeholder='Password'
+                        onChange={e => setPassWord(e.target.value)}
+                    />
+
+                    <button onClick={SendCred}>Send</button>
+
+                    <h4>Standard Login? <Link to={'/'}>Click Here</Link></h4>
+                </div>
+
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
                 />
-
-                <input
-                    type="password"
-                    value={password}
-                    placeholder='Password'
-                    onChange={e => setPassWord(e.target.value)}
-                />
-
-                <button onClick={SendCred}>Send</button>
-
-                <h4>Standard Login? <Link to={'/'}>Click Here</Link></h4>
             </div>
-
-            <Toaster
-                position="top-center"
-                reverseOrder={false}
-            />
         </div>
     )
 }
